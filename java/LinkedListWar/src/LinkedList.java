@@ -53,12 +53,15 @@ public class LinkedList<E> implements List<E> {
      * @param x the element to be added to this list
      * @return true
      */
-    public boolean add(Card x) {
-        Node<Card> newNode = new Node<>(x, tailNode, null);
+    public boolean add(E x) {
+        // create a newNode that is attached after tailNode
+        Node<E> newNode = new Node<>(x, tailNode, null);
+        // set it as the new tailNode
         tailNode = newNode;
-        listSize++; 
-        
-        return true; // TODO: replace with working code
+        // increase listSize
+        listSize++;
+
+        return true;
     }
 
     /**
@@ -69,8 +72,15 @@ public class LinkedList<E> implements List<E> {
      * @return true if the operation succeeded, false otherwise
      * @throws IllegalArgumentException if index is invalid
      */
-    public boolean add(int index, Card x) {
-        return false; // TODO: replace with working code
+    public boolean add(int index, E x) {
+        if (index < listSize) {
+            for (int i=0; i<index; i++) {
+                return true;
+            }
+        }
+        throw IllegalArgumentException("Invalid index");
+
+        return false;
     }
 
     /**
@@ -89,7 +99,7 @@ public class LinkedList<E> implements List<E> {
      * @return the element at the specified position in this list
      * @throws IllegalArgumentException if index is invalid
      */
-    public Card get(int index) {
+    public E get(int index) {
         return null; // TODO: replace with working code
     }
 
@@ -101,7 +111,7 @@ public class LinkedList<E> implements List<E> {
      * @return the previous value of the element at index
      * @throws IllegalArgumentException if index is invalid
      */
-    public Card set(int index, Card x) {
+    public E set(int index, E x) {
         return null; // TODO: replace with working code
     }
 
@@ -112,7 +122,7 @@ public class LinkedList<E> implements List<E> {
      * @return the object that was removed
      * @throws IllegalArgumentException if index is invalid
      */
-    public Card remove(int index) {
+    public E remove(int index) {
         return null; // TODO: replace with working code
     }
 
@@ -123,7 +133,7 @@ public class LinkedList<E> implements List<E> {
      *         <tt>false</tt> otherwise.
      */
     public boolean isEmpty() {
-        return false; // TODO: replace with working code
+        return listSize == 0;
     }
 
     /**
@@ -133,16 +143,18 @@ public class LinkedList<E> implements List<E> {
      * @return <code>true</code> if the specified element is present;
      *         <code>false</code> otherwise.
      */
-    public boolean contains(Card element) {
-        Node<Card> temp = headNode;
+    public boolean contains(E element) {
+        Node<E> temp = headNode;
 
         while (temp.nextNode != null) {
-            temp = temp.nextNode;
+            if (temp == element) {
+                return true;
+            }
 
-            if (temp == )
+            temp = temp.nextNode;
         }
 
-        
+        return false;
     }
 
     /**
@@ -152,13 +164,12 @@ public class LinkedList<E> implements List<E> {
      * @return the index of the element in the list, or -1 if it is not contained
      *         within the list
      */
-    public int indexOf(Card element) {
+    public int indexOf(E element) {
         return 0; // TODO: replace with working code
 
     }
 
     public static void main(String[] args) {
-        // TODO: insert main code here
-
     }
+
 }
