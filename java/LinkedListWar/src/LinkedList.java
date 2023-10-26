@@ -1,23 +1,32 @@
 import java.util.List;
 
 public class LinkedList<E> implements List<E> {
-    // the type of elemen being stored
-    private E elementType;
-
     // first node in the LinkedList
-    private Node headNode;
+    private Node<E> headNode;
     // last node in linkedList
-    private Node tailNode;
+    private Node<E> tailNode;
     private int listSize;
 
     // inner node class
-    class Node {
+    class Node<E> {
         // data stored in this node
         private E data;
 
-        private Node previousNode;
-        private Node nextNode;
+        private Node<E> previousNode;
+        private Node<E> nextNode;
         
+        /* 
+         * constructor for a doubly-linked node
+         * accepts an Object, a node, and another node
+         * as a data value, previous, and next respectively
+         */
+        public Node(E data, Node<E> previousNode, Node<E> nextNode) {
+            this.data = data;
+
+            this.previousNode = previousNode;
+            this.nextNode = nextNode;
+        }
+
         /*
          * no argument constructor or doubly linked node
          * previousNode, nextNode, and data are all set to null
@@ -27,22 +36,10 @@ public class LinkedList<E> implements List<E> {
             nextNode = null;
             data = null;
         }
-
-        /* 
-         * constructor for a doubly-linked node
-         * accepts an Object, a node, and another node
-         * as a data value, previous, and next respectively
-         */
-        public Node(E data, Node previousNode, Node nextNode) {
-            this.data = data;
-
-            this.previousNode = previousNode;
-            this.nextNode = nextNode;
-        }
     }
 
     public LinkedList() {
-        headNode = new Node();
+        headNode = new Node<E>();
         tailNode = headNode;
         listSize = 0;
     }
@@ -74,9 +71,12 @@ public class LinkedList<E> implements List<E> {
      */
     public boolean add(int index, E x) {
         if (index < listSize) {
-            for (int i=0; i<index; i++) {
+            Node<E> temp = headNode;
+
+            for (int i=0; i<index-1; i++) {
+                temp = temp.nextNode;
                 return true;
-            }
+            } 
         }
         throw IllegalArgumentException("Invalid index");
 
@@ -143,7 +143,7 @@ public class LinkedList<E> implements List<E> {
      * @return <code>true</code> if the specified element is present;
      *         <code>false</code> otherwise.
      */
-    public boolean contains(E element) {
+    public boolean contains(Object element) {
         Node<E> temp = headNode;
 
         while (temp.nextNode != null) {
@@ -164,12 +164,16 @@ public class LinkedList<E> implements List<E> {
      * @return the index of the element in the list, or -1 if it is not contained
      *         within the list
      */
-    public int indexOf(E element) {
+    public int indexOf(Object element) {
         return 0; // TODO: replace with working code
 
     }
 
-    public static void main(String[] args) {
+    @Override
+    public List<E> subList(int fromIndex, int toIndex) {
+        return this;
     }
 
+    @Override
+    public 
 }
