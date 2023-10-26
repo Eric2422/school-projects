@@ -139,8 +139,14 @@ public class LinkedList<E> implements List<E> {
                 temp = temp.getNextNode();
             }
 
+            // store the data to be removed
+            E removedNode = temp.getNextNode().getData();
+
             // set temp.nextNode to the node two after
             temp.setNextNode(temp.getNextNode().getNextNode());
+
+            // return the removedNode
+            return removedNode;
         }
 
         // else throw an Exception

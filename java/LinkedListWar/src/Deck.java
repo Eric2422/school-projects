@@ -6,6 +6,11 @@ public class Deck {
         cards = new LinkedList<>();
     }
 
+    // returns  a random integer from min to max(inclusive)
+    public static void randInt(int min, int max) {
+        return (int) (Math.random() * (max - min + 1) + min);
+    }
+
     // add card to end of cards(i.e. bottom of deck)
     public void add(Card x) {
         cards.add(x);
@@ -36,6 +41,13 @@ public class Deck {
     // method to randomize the order of the cards in the deck
     public void shuffle() {
         // loop through the cards
+        for (int i=0; i<cards.size(); i++) {
+            // remove the card and reinsert it at a random index
+            cards.add(
+                cards.remove(i),
+                randInt(0, cards.size() - 1)
+            );
+        }
     }
 
     // returns whether the deck is empty(i.e. when cards.size() == 0)
