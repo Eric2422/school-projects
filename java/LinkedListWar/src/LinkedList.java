@@ -75,15 +75,12 @@ public class LinkedList<E> implements List<E> {
     public boolean add(int index, E x) {
         if (index < listSize) {
             for (int i=0; i<index; i++) {
-                
+                return true;
             }
-
-
-        } else {
-            throw IllegalArgumentException('Invalid index');
-
-            return false;
         }
+        throw IllegalArgumentException("Invalid index");
+
+        return false;
     }
 
     /**
