@@ -1,15 +1,15 @@
 public class LinkedList<E> implements List<E> {
     // first node in the LinkedList
-    private Node headNode;
+    private Node<E> headNode;
 
     // last node in LinkedList
-    private Node tailNode;
+    private Node<E> tailNode;
 
     // number of elements in this LinkedList
     private int listSize;
 
     public LinkedList() {
-        headNode = new Node();
+        headNode = new Node<E>();
         tailNode = headNode;
         listSize = 0;
     }
@@ -215,6 +215,8 @@ public class LinkedList<E> implements List<E> {
         return -1;
     }
 
-    public static void main(String[] args) {
+    @Override
+    public List<E> subList(int fromIndex, int toIndex) {
+        return this;
     }
 }
