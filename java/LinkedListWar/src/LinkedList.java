@@ -214,9 +214,4 @@ public class LinkedList<E> implements List<E> {
         // return -1
         return -1;
     }
-
-    @Override
-    public List<E> subList(int fromIndex, int toIndex) {
-        return this;
-    }
 }
