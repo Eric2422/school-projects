@@ -1,45 +1,10 @@
-import java.util.List;
-
 public class LinkedList<E> implements List<E> {
-    // the type of elemen being stored
-    private E elementType;
 
     // first node in the LinkedList
     private Node headNode;
     // last node in linkedList
     private Node tailNode;
     private int listSize;
-
-    // inner node class
-    class Node {
-        // data stored in this node
-        private E data;
-
-        private Node previousNode;
-        private Node nextNode;
-        
-        /*
-         * no argument constructor or doubly linked node
-         * previousNode, nextNode, and data are all set to null
-         */
-        public Node() {
-            previousNode = null;
-            nextNode = null;
-            data = null;
-        }
-
-        /* 
-         * constructor for a doubly-linked node
-         * accepts an Object, a node, and another node
-         * as a data value, previous, and next respectively
-         */
-        public Node(E data, Node previousNode, Node nextNode) {
-            this.data = data;
-
-            this.previousNode = previousNode;
-            this.nextNode = nextNode;
-        }
-    }
 
     public LinkedList() {
         headNode = new Node();
@@ -55,9 +20,11 @@ public class LinkedList<E> implements List<E> {
      */
     public boolean add(E x) {
         // create a newNode that is attached after tailNode
-        Node<E> newNode = new Node<>(x, tailNode, null);
+        Node<E> newNode = new Node<>(x, null);
+
         // set it as the new tailNode
-        tailNode = newNode;
+        tailNode.setNextNode(newNode);
+
         // increase listSize
         listSize++;
 
@@ -73,14 +40,29 @@ public class LinkedList<E> implements List<E> {
      * @throws IllegalArgumentException if index is invalid
      */
     public boolean add(int index, E x) {
+        // if the index is valid,
+        // add the element
         if (index < listSize) {
-            for (int i=0; i<index; i++) {
-                return true;
-            }
-        }
-        throw IllegalArgumentException("Invalid index");
+            // start at the headNode
+            Node<E> temp = headNode;
 
-        return false;
+            // traverse to one before the node at the index
+            for (int i=0; i<index-1; i++) {
+                temp = temp.getNextNode();
+            }
+            
+            // create a new node that stores x
+            // insert it between temp and the next node
+            Node<E> newNode = new Node<>(x, temp.getNextNode());
+
+            // set temp's nextNode to newNode
+            temp.setNextNode(newNode);
+
+            return true;
+        }
+
+        // else throw an Exception
+        throw new IllegalArgumentException("Invalid index");
     }
 
     /**
@@ -100,7 +82,15 @@ public class LinkedList<E> implements List<E> {
      * @throws IllegalArgumentException if index is invalid
      */
     public E get(int index) {
-        return null; // TODO: replace with working code
+        // start at the headNode
+        Node<E> temp = headNode;
+        
+        // traverse through the LinkedList nodes
+        for (int i=0; i<index; i++) {
+            temp = temp.getNextNode();
+        }
+
+        return temp.getData();
     }
 
     /**
@@ -112,7 +102,20 @@ public class LinkedList<E> implements List<E> {
      * @throws IllegalArgumentException if index is invalid
      */
     public E set(int index, E x) {
-        return null; // TODO: replace with working code
+        // start at the headNode
+        Node<E> temp = headNode;
+        
+        // traverse through the LinkedList nodes
+        for (int i=0; i<index; i++) {
+            temp = temp.getNextNode();
+        }
+
+        // replace the data with x
+        E replacedData = temp.getData();
+        temp.setData(x);
+
+        // return the old data
+        return replacedData;
     }
 
     /**
@@ -123,7 +126,23 @@ public class LinkedList<E> implements List<E> {
      * @throws IllegalArgumentException if index is invalid
      */
     public E remove(int index) {
-        return null; // TODO: replace with working code
+        // if the index is valid,
+        // remove the element
+        if (index < listSize) {
+            // start at the headNode
+            Node<E> temp = headNode;
+
+            // traverse to one before the node at the index
+            for (int i=0; i<index-1; i++) {
+                temp = temp.getNextNode();
+            }
+
+            // set temp.nextNode to the node two after
+            temp.setNextNode(temp.getNextNode().getNextNode());
+        }
+
+        // else throw an Exception
+        throw new IllegalArgumentException("Invalid index");
     }
 
     /**
@@ -144,16 +163,22 @@ public class LinkedList<E> implements List<E> {
      *         <code>false</code> otherwise.
      */
     public boolean contains(E element) {
+        // start at the head
         Node<E> temp = headNode;
 
-        while (temp.nextNode != null) {
-            if (temp == element) {
+        // loop through the entire LinkedList
+        while (temp.getNextNode() != null) {
+            // if the data in the LinkedList == element
+            if (temp.getData() == element) {
                 return true;
             }
 
-            temp = temp.nextNode;
+            // else go to the nextNode
+            temp = temp.getNextNode();
         }
 
+        // if the loop has finished without finding element,
+        // return false
         return false;
     }
 
@@ -165,11 +190,29 @@ public class LinkedList<E> implements List<E> {
      *         within the list
      */
     public int indexOf(E element) {
-        return 0; // TODO: replace with working code
+        // count the index
+        int index = 0;
 
+        // start at the head
+        Node<E> temp = headNode;
+
+        // loop through the entire LinkedList
+        while (temp.getNextNode() != null) {
+            // if the data in the LinkedList == element
+            if (temp.getData() == element) {
+                return index;
+            }
+
+            // else go to the nextNode
+            temp = temp.getNextNode();
+            index++;
+        }
+
+        // if the loop has finished without finding element,
+        // return -1
+        return -1;
     }
 
     public static void main(String[] args) {
     }
-
 }
