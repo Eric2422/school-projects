@@ -4,21 +4,21 @@ public class Node<E> {
 
     // the next node
     private Node<E> nextNode;
-    
+
     /*
-        * no argument constructor or doubly linked node
-        * nextNode, and data are all set to null
-        */
+     * no argument constructor or doubly linked node
+     * nextNode, and data are all set to null
+     */
     public Node() {
         nextNode = null;
         data = null;
     }
 
-    /* 
-        * constructor for a doubly-linked node
-        * accepts an Object, a node, and another node
-        * as a data value, previous, and next respectively
-        */
+    /*
+     * constructor for a doubly-linked node
+     * accepts an Object, a node, and another node
+     * as a data value, previous, and next respectively
+     */
     public Node(E data, Node nextNode) {
         this.data = data;
 

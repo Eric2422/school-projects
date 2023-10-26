@@ -1,9 +1,11 @@
 public class LinkedList<E> implements List<E> {
-
     // first node in the LinkedList
     private Node headNode;
-    // last node in linkedList
+
+    // last node in LinkedList
     private Node tailNode;
+
+    // number of elements in this LinkedList
     private int listSize;
 
     public LinkedList() {
