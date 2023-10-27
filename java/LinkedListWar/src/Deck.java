@@ -7,7 +7,7 @@ public class Deck {
     }
 
     // returns  a random integer from min to max(inclusive)
-    public static void randInt(int min, int max) {
+    public static int randInt(int min, int max) {
         return (int) (Math.random() * (max - min + 1) + min);
     }
 
@@ -28,7 +28,7 @@ public class Deck {
         // loop through the suit values
         for (int rank=0; rank<14; rank++) {
             for (int suit=2; suit<4; suit++) {
-                cards.add(new Card(rank, suit))
+                cards.add(new Card(rank, suit));
             }
         }
     }
@@ -44,8 +44,8 @@ public class Deck {
         for (int i=0; i<cards.size(); i++) {
             // remove the card and reinsert it at a random index
             cards.add(
-                cards.remove(i),
-                randInt(0, cards.size() - 1)
+                randInt(0, cards.size() - 1),
+                cards.remove(i)
             );
         }
     }

@@ -19,7 +19,7 @@ public class Node<E> {
      * accepts an Object, a node, and another node
      * as a data value, previous, and next respectively
      */
-    public Node(E data, Node nextNode) {
+    public Node(E data, Node<E> nextNode) {
         this.data = data;
 
         this.nextNode = nextNode;
