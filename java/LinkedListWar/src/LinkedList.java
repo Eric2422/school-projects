@@ -22,10 +22,18 @@ public class LinkedList<E> implements List<E> {
      */
     public boolean add(E x) {
         // create a newNode that is attached after tailNode
-        Node<E> newNode = new Node<>(x, null);
+        Node<E> newNode = new Node<>(x, tailNode, null);
+
+        tailNode.setNextNode(newNode);
+
+        // if the list is empty
+        // set it as the headNode
+        if (listSize == 0) {
+            headNode = newNode;
+        }
 
         // set it as the new tailNode
-        tailNode.setNextNode(newNode);
+        tailNode = newNode;
 
         // increase listSize
         listSize++;
@@ -42,9 +50,8 @@ public class LinkedList<E> implements List<E> {
      * @throws IllegalArgumentException if index is invalid
      */
     public boolean add(int index, E x) {
-        // if the index is valid,
-        // add the element
-        if (index < listSize) {
+        // if it is valid 
+        if (index < listSize) { 
             // start at the headNode
             Node<E> temp = headNode;
 
@@ -55,10 +62,13 @@ public class LinkedList<E> implements List<E> {
             
             // create a new node that stores x
             // insert it between temp and the next node
-            Node<E> newNode = new Node<>(x, temp.getNextNode());
+            Node<E> newNode = new Node<>(x, temp, temp.getNextNode());
 
             // set temp's nextNode to newNode
             temp.setNextNode(newNode);
+
+            // increment listsize
+            listSize++;
 
             return true;
         }
@@ -86,7 +96,7 @@ public class LinkedList<E> implements List<E> {
     public E get(int index) {
         // start at the headNode
         Node<E> temp = headNode;
-        
+
         // traverse through the LinkedList nodes
         for (int i=0; i<index; i++) {
             temp = temp.getNextNode();
@@ -120,6 +130,47 @@ public class LinkedList<E> implements List<E> {
         return replacedData;
     }
 
+    /*
+     * Remove the first node in the list
+     * Return its data
+     */
+    private E removeFirst() {
+        E removedData = headNode.getData();
+
+        // set the second node as head node
+        headNode = headNode.getNextNode();
+
+        listSize--;
+
+        // if the list contains one or no nodes
+        if (listSize <= 1) {
+            tailNode = headNode;
+        }
+
+        return removedData;
+    }
+
+    /*
+     * Remove the last node
+     * Return its data
+     */
+    private E removeLast() {
+        // get data of last node
+        E removedData = tailNode.getData();
+
+        // set tailNode to the second-to-last node
+        tailNode = tailNode.getPreviousNode();
+
+        // set tailNode.nextNode to null
+        tailNode.setNextNode(null);
+
+        // reduce listSize
+        listSize --;
+
+        // return data from removedData
+        return removedData;
+    }
+
     /**
      * Removes the object at the specified position
      * 
@@ -128,9 +179,15 @@ public class LinkedList<E> implements List<E> {
      * @throws IllegalArgumentException if index is invalid
      */
     public E remove(int index) {
-        // if the index is valid,
-        // remove the element
-        if (index < listSize) {
+        // if index is 0
+        if (index == 0) {
+            // remove and return first node
+            return removeFirst();
+
+        } else if (index == listSize - 1) { // if index is the last
+            return removeLast();
+
+        } else if (index < listSize) { // if the index is valid but not the end node
             // start at the headNode
             Node<E> temp = headNode;
 
@@ -140,13 +197,25 @@ public class LinkedList<E> implements List<E> {
             }
 
             // store the data to be removed
-            E removedNode = temp.getNextNode().getData();
+            E removedData = temp.getNextNode().getData();
+
+            // set the previousNode of the node two after to temp
+            temp.getNextNode().getNextNode().setPreviousNode(temp);
 
             // set temp.nextNode to the node two after
             temp.setNextNode(temp.getNextNode().getNextNode());
 
-            // return the removedNode
-            return removedNode;
+            // if temp is the last(i.e. it points to null)
+            // set it as tailNode
+            if (temp.getNextNode() == null) {
+                tailNode = temp;
+            }
+
+            // decrement listSize
+            listSize--;
+
+            // return the removedData
+            return removedData;
         }
 
         // else throw an Exception
@@ -219,5 +288,18 @@ public class LinkedList<E> implements List<E> {
         // if the loop has finished without finding element,
         // return -1
         return -1;
+    }
+
+    public static void main(String[] args) {
+        LinkedList<Card> l = new LinkedList();
+
+        l.add(new Card(Card.ACE, Card.SPADES));
+        l.add(new Card(2, Card.DIAMONDS));
+        l.add(new Card(3, Card.HEARTS));
+        l.add(new Card(4, Card.CLUBS));
+
+        for (int i = 3; i >= 0; i--) {
+            System.out.println(l.get(i));
+        }
     }
 }

@@ -7,7 +7,7 @@ public class Deck {
     }
 
     // returns  a random integer from min to max(inclusive)
-    public static void randInt(int min, int max) {
+    public static int randInt(int min, int max) {
         return (int) (Math.random() * (max - min + 1) + min);
     }
 
@@ -26,9 +26,9 @@ public class Deck {
     // fill the deck with a standard 52 set of cards
     public void fill() {
         // loop through the suit values
-        for (int rank=0; rank<14; rank++) {
-            for (int suit=2; suit<4; suit++) {
-                cards.add(new Card(rank, suit))
+        for (int rank=2; rank<=14; rank++) {
+            for (int suit=0; suit<4; suit++) {
+                cards.add(new Card(rank, suit));
             }
         }
     }
@@ -42,16 +42,34 @@ public class Deck {
     public void shuffle() {
         // loop through the cards
         for (int i=0; i<cards.size(); i++) {
-            // remove the card and reinsert it at a random index
-            cards.add(
-                cards.remove(i),
-                randInt(0, cards.size() - 1)
-            );
+            // generate a random index in cards
+            int random = randInt(0, cards.size() - 1);
+
+            // swap the data contained within the nodes
+            Card temp = cards.get(i);
+            
+            cards.set(i, cards.get(random));
+            cards.set(random, temp);
         }
     }
 
     // returns whether the deck is empty(i.e. when cards.size() == 0)
     public boolean isEmpty() {
         return cards.size() == 0;
+    }
+
+    public static void main(String[] args) {
+        Deck deck = new Deck();
+
+        deck.fill();
+        deck.add(new Card(Card.ACE, Card.SPADES)); // add a duplicate ace of spades as the last card
+
+        for (int i=0; i<3; i++) {
+            deck.shuffle();
+        }
+
+        while(!deck.isEmpty()) {            
+            System.out.println(deck.draw());
+        }
     }
 }
