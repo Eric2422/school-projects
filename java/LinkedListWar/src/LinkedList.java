@@ -1,15 +1,15 @@
-public class LinkedList<E> implements List<E> {
+public class LinkedList implements List {
     // first node in the LinkedList
-    private Node<E> headNode;
+    private Node headNode;
 
     // last node in LinkedList
-    private Node<E> tailNode;
+    private Node tailNode;
 
     // number of elements in this LinkedList
     private int listSize;
 
     public LinkedList() {
-        headNode = new Node<E>();
+        headNode = new Node();
         tailNode = headNode;
         listSize = 0;
     }
@@ -20,9 +20,9 @@ public class LinkedList<E> implements List<E> {
      * @param x the element to be added to this list
      * @return true
      */
-    public boolean add(E x) {
+    public boolean add(Card x) {
         // create a newNode that is attached after tailNode
-        Node<E> newNode = new Node<>(x, tailNode, null);
+        Node newNode = new Node(x, tailNode, null);
 
         tailNode.setNextNode(newNode);
 
@@ -49,11 +49,11 @@ public class LinkedList<E> implements List<E> {
      * @return true if the operation succeeded, false otherwise
      * @throws IllegalArgumentException if index is invalid
      */
-    public boolean add(int index, E x) {
+    public boolean add(int index, Card x) {
         // if it is valid 
         if (index < listSize) { 
             // start at the headNode
-            Node<E> temp = headNode;
+            Node temp = headNode;
 
             // traverse to one before the node at the index
             for (int i=0; i<index-1; i++) {
@@ -62,7 +62,7 @@ public class LinkedList<E> implements List<E> {
             
             // create a new node that stores x
             // insert it between temp and the next node
-            Node<E> newNode = new Node<>(x, temp, temp.getNextNode());
+            Node newNode = new Node(x, temp, temp.getNextNode());
 
             // set temp's nextNode to newNode
             temp.setNextNode(newNode);
@@ -93,9 +93,9 @@ public class LinkedList<E> implements List<E> {
      * @return the element at the specified position in this list
      * @throws IllegalArgumentException if index is invalid
      */
-    public E get(int index) {
+    public Card get(int index) {
         // start at the headNode
-        Node<E> temp = headNode;
+        Node temp = headNode;
 
         // traverse through the LinkedList nodes
         for (int i=0; i<index; i++) {
@@ -113,9 +113,9 @@ public class LinkedList<E> implements List<E> {
      * @return the previous value of the element at index
      * @throws IllegalArgumentException if index is invalid
      */
-    public E set(int index, E x) {
+    public Card set(int index, Card x) {
         // start at the headNode
-        Node<E> temp = headNode;
+        Node temp = headNode;
         
         // traverse through the LinkedList nodes
         for (int i=0; i<index; i++) {
@@ -123,7 +123,7 @@ public class LinkedList<E> implements List<E> {
         }
 
         // replace the data with x
-        E replacedData = temp.getData();
+        Card replacedData = temp.getData();
         temp.setData(x);
 
         // return the old data
@@ -134,8 +134,8 @@ public class LinkedList<E> implements List<E> {
      * Remove the first node in the list
      * Return its data
      */
-    private E removeFirst() {
-        E removedData = headNode.getData();
+    private Card removeFirst() {
+        Card removedData = headNode.getData();
 
         // set the second node as head node
         headNode = headNode.getNextNode();
@@ -154,9 +154,9 @@ public class LinkedList<E> implements List<E> {
      * Remove the last node
      * Return its data
      */
-    private E removeLast() {
+    private Card removeLast() {
         // get data of last node
-        E removedData = tailNode.getData();
+        Card removedData = tailNode.getData();
 
         // set tailNode to the second-to-last node
         tailNode = tailNode.getPreviousNode();
@@ -178,7 +178,7 @@ public class LinkedList<E> implements List<E> {
      * @return the object that was removed
      * @throws IllegalArgumentException if index is invalid
      */
-    public E remove(int index) {
+    public Card remove(int index) {
         // if index is 0
         if (index == 0) {
             // remove and return first node
@@ -189,7 +189,7 @@ public class LinkedList<E> implements List<E> {
 
         } else if (index < listSize) { // if the index is valid but not the end node
             // start at the headNode
-            Node<E> temp = headNode;
+            Node temp = headNode;
 
             // traverse to one before the node at the index
             for (int i=0; i<index-1; i++) {
@@ -197,7 +197,7 @@ public class LinkedList<E> implements List<E> {
             }
 
             // store the data to be removed
-            E removedData = temp.getNextNode().getData();
+            Card removedData = temp.getNextNode().getData();
 
             // set the previousNode of the node two after to temp
             temp.getNextNode().getNextNode().setPreviousNode(temp);
@@ -239,9 +239,9 @@ public class LinkedList<E> implements List<E> {
      * @return <code>true</code> if the specified element is present;
      *         <code>false</code> otherwise.
      */
-    public boolean contains(E element) {
+    public boolean contains(Card element) {
         // start at the head
-        Node<E> temp = headNode;
+        Node temp = headNode;
 
         // loop through the entire LinkedList
         while (temp.getNextNode() != null) {
@@ -266,12 +266,12 @@ public class LinkedList<E> implements List<E> {
      * @return the index of the element in the list, or -1 if it is not contained
      *         within the list
      */
-    public int indexOf(E element) {
+    public int indexOf(Card element) {
         // count the index
         int index = 0;
 
         // start at the head
-        Node<E> temp = headNode;
+        Node temp = headNode;
 
         // loop through the entire LinkedList
         while (temp.getNextNode() != null) {

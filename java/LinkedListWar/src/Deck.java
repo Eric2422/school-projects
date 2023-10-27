@@ -1,9 +1,9 @@
 public class Deck {
-    LinkedList<Card> cards;
+    LinkedList cards;
 
     // constructor for an empty deck
     public Deck() {
-        cards = new LinkedList<>();
+        cards = new LinkedList();
     }
 
     // returns  a random integer from min to max(inclusive)
