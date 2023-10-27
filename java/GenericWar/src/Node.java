@@ -1,6 +1,6 @@
 public class Node {
     // data stored in this node
-    private E data;
+    private Card data;
 
     // the previous node
     private Node previousNode;
@@ -21,21 +21,21 @@ public class Node {
 
     /*
      * constructor for a doubly-linked node
-     * accepts an Object, a node, and another node
+     * accepts a Card, a node, and another node
      * as a data value, previous, and next respectively
      */
-    public Node(E data, Node previousNode, Node nextNode) {
+    public Node(Card data, Node previousNode, Node nextNode) {
         this.data = data;
 
         this.previousNode = previousNode;
         this.nextNode = nextNode;
     }
 
-    public E getData() {
+    public Card getData() {
         return data;
     }
 
-    public void setData(E newData) {
+    public void setData(Card newData) {
         data = newData;
     }
 
