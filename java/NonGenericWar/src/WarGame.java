@@ -69,7 +69,6 @@ public class WarGame {
         // it's a war
         boolean isWar = !playedCards.isEmpty();
 
-        
         if (isWar) {
             // if playerDeck has less than three cards
             // computer wins
