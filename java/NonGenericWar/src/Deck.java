@@ -58,6 +58,18 @@ public class Deck {
         return cards.size() == 0;
     }
 
+    public String toString() {
+        String temp = "[";
+
+        for (int i=0; i<cards.size()-1; i++) {
+            temp += cards.get(i) + ", ";
+        }
+
+        temp += cards.get(cards.size() - 1) + "]";
+
+        return temp;
+    }
+
     public static void main(String[] args) {
         Deck deck = new Deck();
 

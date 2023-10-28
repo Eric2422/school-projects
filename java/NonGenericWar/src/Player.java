@@ -7,7 +7,7 @@ public class Player {
 
     public Player(String name, Deck hand) {
         this.name = name;
-        this.deck = deck;
+        this.hand = hand;
     }
 
     // get the name of the player

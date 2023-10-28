@@ -24,7 +24,9 @@ public class LinkedList implements List {
         // create a newNode that is attached after tailNode
         Node newNode = new Node(x, tailNode, null);
 
-        tailNode.setNextNode(newNode);
+        if (tailNode != null) {
+            tailNode.setNextNode(newNode);
+        } 
 
         // if the list is empty
         // set it as the headNode
@@ -291,7 +293,7 @@ public class LinkedList implements List {
     }
 
     public static void main(String[] args) {
-        LinkedList<Card> l = new LinkedList();
+        LinkedList l = new LinkedList();
 
         l.add(new Card(Card.ACE, Card.SPADES));
         l.add(new Card(2, Card.DIAMONDS));
