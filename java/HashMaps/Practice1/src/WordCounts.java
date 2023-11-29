@@ -13,14 +13,11 @@ public class WordCounts {
         // and treats them as separating words
         ArrayList<String> splitSentences = new ArrayList<>(Arrays.asList(sentences.split("\\W+")));
 
-        // create a set of all the unique words
-        Set<String> wordSet = new HashSet<>(splitSentences);
-
         // create a HashMap to store the word counts
         HashMap<String, Integer> wordCount = new HashMap<>();
 
         // loop through the set
-        for (String ele : wordSet) {
+        for (String ele : splitSentences) {
             wordCount.put(ele, Collections.frequency(splitSentences, ele));
         }
 
