@@ -24,6 +24,7 @@ public class WordCounts {
             wordCount.put(ele, Collections.frequency(splitSentences, ele));
         }
 
+        System.out.println();
         printSortedHashMap(wordCount);
     }
 
