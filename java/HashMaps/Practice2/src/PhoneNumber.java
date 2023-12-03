@@ -1,4 +1,4 @@
-public class Phonebook {
+public class PhoneNumber {
     private int countryCode;
     private String areaCode;
     private String centralOfficeCode;
@@ -21,7 +21,7 @@ public class Phonebook {
      * @param centralOfficeCode the middle three digits
      * @param lineNumber        the last four digits
      */
-    public Phonebook(int countryCode, String areaCode, String centralOfficeCode, String lineNumber) {
+    public PhoneNumber(int countryCode, String areaCode, String centralOfficeCode, String lineNumber) {
         this.countryCode = countryCode;
         this.areaCode = areaCode;
         this.centralOfficeCode = centralOfficeCode;

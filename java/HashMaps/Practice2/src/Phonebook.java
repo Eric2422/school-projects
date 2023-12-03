@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.*;
 
 public class Phonebook {
     /**
@@ -13,10 +13,12 @@ public class Phonebook {
         // until the user enters a String of exactly seven digits
         do {
             // ask them to input a phone number
-            System.out.println("Please enter a phone number without any dashes(-) or other formatting(i.e. XXXXXXXXXX): ");
+            System.out.println("\nPlease enter a phone number without any dashes(-) or other formatting(i.e. XXXXXXXXXX): ");
             phoneNum = input.nextLine();
 
-        } while (!phoneNum.matches("\d{7}"));
+        } while (!phoneNum.matches("\\d{10}"));
+
+        System.out.println();
         
         // split the phone number into three
         // and pass into a new PhoneNumber to return
@@ -46,11 +48,12 @@ public class Phonebook {
                 // and store it into phonebook with name
                 phonebook.put(name, inputPhoneNumber());
 
-            } else if (phonebook.keySet.contains(name)) { // if the name is in phonebook
+            } else if (phonebook.keySet().contains(name)) { // if the name is in phonebook
                 // print out the name
                 System.out.println(phonebook.get(name));
+                System.out.println();
             }
 
-        } while (userInput.equals(""));
+        } while (!name.equals(""));
     }
 }
