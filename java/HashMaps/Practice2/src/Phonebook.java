@@ -39,7 +39,7 @@ public class Phonebook {
         String name = " ";
         do {
             System.out.println("Please enter a name:");
-            name = input.nextLine();
+            name = input.nextLine().trim();
 
             // if the name is not in the phonebook
             // and the name is not blank
@@ -55,5 +55,13 @@ public class Phonebook {
             }
 
         } while (!name.equals(""));
+
+        // print out all the entries in phonebook
+        System.out.println("Complete Phonebook: ");
+
+        for (String key : phonebook.keySet()) {
+            System.out.print(key + " —— ");
+            System.out.println(phonebook.get(key));
+        }
     }
 }
