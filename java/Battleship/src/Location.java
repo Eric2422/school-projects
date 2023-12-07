@@ -5,7 +5,6 @@
  * 
  * create getters and setters for row and col
  * create getters and setters for the status of the location (hit, miss, or unguessed)
- * 
  */
 
 public class Location {
