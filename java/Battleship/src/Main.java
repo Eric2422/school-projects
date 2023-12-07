@@ -44,7 +44,9 @@
  *      mark whether the shot was a hit or miss
  * 
  * if one player's ships are destroyed,
- *      print out a message and reveal the location of all enemy ships
+ *      print out a message
+ *      reveal the location of all enemy ships
+ *      let the user click to play again
  * 
  * make the JFrame visible
  */
