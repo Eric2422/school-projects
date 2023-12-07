@@ -41,7 +41,10 @@
  *      display whether the guess was a hit or miss
  * 
  *      make the computer fire at a random location
- *      
+ *      mark whether the shot was a hit or miss
+ * 
+ * if one player's ships are destroyed,
+ *      print out a message and reveal the location of all enemy ships
  * 
  * make the JFrame visible
  */
