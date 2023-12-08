@@ -2,7 +2,7 @@
  * —————————————————————————————————— PSEUDOCODE ——————————————————————————————————
  * import swing
  * 
- * import the icons for smoke and splash
+ * import the icons for water, smoke and splash
  * set them as ImageIcons
  * 
  * create a JFrame
