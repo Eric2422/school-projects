@@ -3,7 +3,7 @@
  * import all the ship images and save them as ImageIcons
  * 
  * declare public constants
- *      - a HashMap mapping ship type(e.g. destroyer, cruiser, patrol boat) to ship length
+ *      - a enum with ship type(e.g. destroyer, cruiser, patrol boat) and ship lengths
  *      - a HashMap mapping shipType to ImageIcons
  * 
  * declare private variables:
@@ -21,15 +21,17 @@
  */    
 
 public class Ship {
-    // create the HashMap that stores ship types to ship lengths
-    public final static HashMap<String, Integer> SHIP_TYPES = new HashMap<>();
-    static {
-        SHIP_TYPES.put("Carrier", 5);
-        SHIP_TYPES.put("Battleship", 4);
-        SHIP_TYPES.put("Destroyer", 3);
-        SHIP_TYPES.put("Submarine", 3);
-        SHIP_TYPES.put("Patrol Boat", 2);
+    public enum ShipType {
+        CARRIER("Carrier", 5),
+        CRUISER("Cruiser", 4),
+        DESTORYER("Destroyer", 3),
+        SUBMARINE("Submarine", 3),
+        PATROL_BOAT("Patrol Boat", 2)
     }
 
+    private 
 
+    public Ship() {
+
+    }
 }
