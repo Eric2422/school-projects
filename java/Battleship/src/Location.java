@@ -13,7 +13,7 @@
  *      display a splash and then a white circle
  * 
  * if it is unguessed
- *      display nothing
+ *      display fog
  */
 
 public class Location {

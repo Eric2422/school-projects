@@ -2,7 +2,7 @@
  * —————————————————————————————————— PSEUDOCODE ——————————————————————————————————
  * import swing
  * 
- * import the icons for water, smoke and splash
+ * import the icons for water, fog, smoke and splash
  * set them as ImageIcons
  * 
  * create a JFrame
@@ -20,9 +20,8 @@
  *      create 100 buttons, each for a single coordinate
  *      each button is an identical square
  *      add each button
- *      set each button's icon to a picture of water
- *      set each button's border to white
- *      disable the buttons
+ *      set each button's icon to a picture of fog
+ *      set each button's border to gray
  * 
  * loop through the list of ship types in Ship:
  *      using the prompt box at the bottom tell the player to click on a location and place a ship
