@@ -1,7 +1,5 @@
 /*
  * —————————————————————————————————— PSEUDOCODE ——————————————————————————————————
- * create an ArrayList of all the player's ships
- * 
  * create a HashMap<Location, Ship> to map the locations to ships
  * 
  * method for choosing ship positions:

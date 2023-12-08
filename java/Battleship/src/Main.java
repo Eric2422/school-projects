@@ -2,9 +2,12 @@
  * —————————————————————————————————— PSEUDOCODE ——————————————————————————————————
  * import swing
  * 
+ * import the icons for smoke and splash
+ * set them as ImageIcons
+ * 
  * create a JFrame
  * set the layout of JFrame to FlowLayout (the default)
- * set the size of the JFrame to 
+ * set the size of the JFrame
  * 
  * set the title of the JFrame to "Battleship"
  * 
@@ -39,10 +42,14 @@
  * while neither player's ships are completely destroyed:
  *      prompt the user to click on a point to fire
  *      display whether the guess was a hit or miss
+ *      display a splash and then a white circle if the guess missed
+ *      display smoke and then a red X if it hits
  * 
  *      make the computer fire at a random location
- *      mark whether the shot was a hit or miss
- * 
+ *      mark with the location as a hit or miss
+ *      display a splash and then a white circle if the guess missed
+ *      display smoke and then a red X if it hits
+ *      
  * if one player's ships are destroyed,
  *      print out a message
  *      reveal the location of all enemy ships
