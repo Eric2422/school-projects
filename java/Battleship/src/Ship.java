@@ -1,5 +1,7 @@
 /*
  * —————————————————————————————————— PSEUDOCODE ——————————————————————————————————
+ * import all the ship images and save them as ImageIcons
+ * 
  * declare public constants
  *      - a HashMap mapping ship type(e.g. destroyer, cruiser, patrol boat) to ship length
  *      - a HashMap mapping shipType to ImageIcons

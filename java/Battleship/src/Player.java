@@ -1,17 +1,22 @@
 /*
  * —————————————————————————————————— PSEUDOCODE ——————————————————————————————————
  * create a HashMap<Location, Ship> to map the locations to ships
+ * create 2D array to store the locations of the ships 
  * 
  * method for choosing ship positions:
  *      loop through the list of ship types in Ship:
  *      using the prompt box at the bottom tell the player to click on a location and place a ship
- *      check if the location is valid (i.e. does not collied with another ship or go off the grid)
- *    
+ *      check if the location is valid (i.e. does not collide with another ship or go off the grid)
+ *      if the length plus the location is greater than 10, it is not valid
+ *      loop through all the points that the ship will occupy
+ *          if the location has a ship, it is not valid
+ * 
  *      if the location is not valid:
  *          ask the user to try again
  *      
  *      if the location is valid:
  *          create the ship and place it on the grid
+ *          the is a label that uses the image of the ship
  * 
  * method for randomly choosing ship positions:
  *      place a ship at a random location and direction for the enemy ships

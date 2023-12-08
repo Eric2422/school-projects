@@ -2,9 +2,6 @@
  * —————————————————————————————————— PSEUDOCODE ——————————————————————————————————
  * import swing
  * 
- * import the icons for water, fog, smoke and splash
- * set them as ImageIcons
- * 
  * create a JFrame
  * set the layout of JFrame to FlowLayout (the default)
  * set the size of the JFrame
@@ -23,9 +20,11 @@
  *      set each button's icon to a picture of fog
  *      set each button's border to gray
  * 
+ * create two Player objects: one for the player and one for the enemy
+ * 
  * loop through the list of ship types in Ship:
  *      using the prompt box at the bottom tell the player to click on a location and place a ship
- *      check if the location is valid (i.e. does not collied with another ship or go off the grid)
+ *      check if the location is valid (i.e. does not collide with another ship or go off the grid)
  *    
  *      if the location is not valid:
  *          ask the user to try again
