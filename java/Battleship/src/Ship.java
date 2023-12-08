@@ -19,6 +19,7 @@
  */    
 
 public class Ship {
+    // create the HashMap that stores ship types to ship lengths
     public final static HashMap<String, Integer> SHIP_TYPES = new HashMap<>();
     static {
         SHIP_TYPES.put("Carrier", 5);
