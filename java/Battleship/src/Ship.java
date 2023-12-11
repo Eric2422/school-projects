@@ -32,7 +32,7 @@ public class Ship {
             this.length = length;
         }
 
-        public int length() {
+        public int getLength() {
             return length;
         }
     }

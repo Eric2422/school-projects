@@ -1,7 +1,8 @@
 /*
  * —————————————————————————————————— PSEUDOCODE ——————————————————————————————————
  * create a HashMap<Location, Ship> to map the locations to ships
- * create 2D array to store the locations of the ships 
+ * create 2D array to store the locations
+ * store the player's total HP as an int
  * 
  * method for choosing ship positions:
  *      loop through the list of ship types in Ship:
@@ -32,8 +33,37 @@
  *          mark it as empty
  */
 
+import java.util.HashMap;
+
 public class Player {
+    // the size of the Battleship grid
+    // just in case someone wants to size it up or down
+    private final static int gridSize = 10;
+
+    // all the locations are mapped to a ship or mapped to null
+    private HashMap<Location, Ship> ships;
+
+    // create a 2D array of locations to traverse
+    // stores the player's ships and enemy's guesses
+    private Location[][] playerGrid;
+
+    // create a 2D array of locations to traverse
+    // stores the player's ships and enemy's guesses
+    private Location[][] enemyGrid;
+
+    // the sum of the HP of all the ships
+    private int totalShipHP;
+
     public Player() {
-        
+        // add up the lengths in Ship.ShipType
+        for (Ship.ShipType type: Ship.ShipType.values()) {
+            totalShipHP += type.getLength();
+        }
+
+        ships = new HashMap<>();
+
+        // create the grids based on gridSize
+        playerGrid = new Location[gridSize][gridSize];
+        enemyGrid = new Location[gridSize][gridSize];
     }
 }
