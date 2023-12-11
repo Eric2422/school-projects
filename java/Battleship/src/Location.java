@@ -18,7 +18,60 @@
  *      display fog
  */
 
+import javax.swing.ImageIcon;
+
 public class Location {
-    char row;
-    int col;
+    // the letters that are valid rows
+    public enum RowLetter {
+        A,
+        B,
+        C,
+        D,
+        E,
+        F,
+        G,
+        H,
+        I,
+        J;
+    }
+
+    // constants for the status of the location
+    public enum Status {
+        HIT,
+        MISS,
+        UNGUESSED;        
+    }
+
+    private RowLetter row;
+    private int col;
+
+    // the status of the location:
+    // hit, miss, or unguessed
+    private Status status;
+
+    // the sprite that is shown over the tile
+    private ImageIcon sprite;
+
+    public Location(RowLetter row, int col) {
+        this.row = row;
+        this.col = col;
+
+        this.status = Status.UNGUESSED;
+    }
+
+    public RowLetter getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }
