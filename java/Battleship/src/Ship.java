@@ -52,7 +52,7 @@ public class Ship {
 
     public Ship(ShipType shipType, Direction direction) {
         this.shipType = shipType;
-        this.length = shipType.length();
+        this.length = shipType.getLength();
 
         this.health = length;
 

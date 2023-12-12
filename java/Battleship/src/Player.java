@@ -38,7 +38,7 @@ import java.util.HashMap;
 public class Player {
     // the size of the Battleship grid
     // just in case someone wants to size it up or down
-    private final static int gridSize = 10;
+    protected final static int gridSize = 10;
 
     // all the locations are mapped to a ship or mapped to null
     private HashMap<Location, Ship> ships;
@@ -65,5 +65,17 @@ public class Player {
         // create the grids based on gridSize
         playerGrid = new Location[gridSize][gridSize];
         enemyGrid = new Location[gridSize][gridSize];
+    }
+
+    /** 
+     * empty function to be override
+     * sets the position of the ship
+     */
+    public void setShipPosition(Ship ship) {
+        
+    }
+
+    public boolean isValid(Location spot){
+        return true;
     }
 }
