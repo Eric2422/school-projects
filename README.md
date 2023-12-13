@@ -1,2 +1,1 @@
-A repository of high school projects
-Written in Java
+A repository of high school projects written in Java
