@@ -2,3 +2,6 @@
 	path = Java/Battleship
 	url = https://github.com/Eric2422/battleship.git
 	ignore = dirty
+[submodule "java/Battleship"]
+	path = java/Battleship
+	url = https://github.com/Eric2422/battleship.git
