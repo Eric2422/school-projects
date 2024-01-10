@@ -2,12 +2,12 @@
 import java.io.File;
 import java.io.IOException;
 
-public class CreateFile {
+public class CreateAFile {
     public static void main(String[] args) {
         try {
-            File myObject = new File("filename.txt");
+            File myObject = new File("../../txt/test.txt");
 
-            if (myObject.createNewfile()) {
+            if (myObject.createNewFile()) {
                 System.out.println("File created: " + myObject.getName());
 
             } else {

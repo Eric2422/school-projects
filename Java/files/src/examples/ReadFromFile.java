@@ -2,9 +2,9 @@ import java.io.*;
 import java.util.Scanner;
 
 public class ReadFromFile {
-    public static main(String[] args) {
+    public static void main(String[] args) {
         try {
-            File myObject = new File("filename.txt");
+            File myObject = new File("../../txt/test.txt");
             Scanner myReader = new Scanner(myObject);
             
             while (myReader.hasNextLine()) {

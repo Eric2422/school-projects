@@ -1,9 +1,10 @@
-import java.io;
+import java.io.*;
 
 public class WriteToFile {
     public static void main(String[] args) {
         try {
-            FileWriter myWriter = new FileWriter("filename.txt");
+            FileWriter myWriter = new FileWriter("../../txt/test.txt");
+
             myWriter.write("Files in Java might be tricky, but is fun enough!");
             myWriter.close();
 
