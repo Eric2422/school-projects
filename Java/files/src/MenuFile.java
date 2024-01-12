@@ -1,6 +1,5 @@
 import java.io.*;
-import java.util.Scanner;
-import java.util.regex.Pattern;
+import java.util.*;
 
 public class MenuFile {
     // all the valid options that the user can type
@@ -81,7 +80,7 @@ public class MenuFile {
 
             // read all the lines from the file
             while (myReader.hasNextLine()) {
-                String data += myReader.nextLine();
+                data += myReader.nextLine();
             }
 
             return data;
@@ -143,12 +142,58 @@ public class MenuFile {
              * followed by a period(.),
              * followed one or more characters that are not periods(.)
              */
-            if (Pattern.matches("[^\.]+\.[^\.]+", fileName)) {
+            if (Pattern.matches("[^\\.]+\\.[^\\.]+", fileName)) {
                 // return a File object that points to the file
                 return new File(fileDir + fileName);
 
             } else { // if is not a valid fileName
                 System.out.println("Invalid file name");
+                System.out.println();
+            }
+        }
+    }
+
+    /** 
+     * Continously prompts the user to input their birthday until they enter a valid one
+     * 
+     * @param  age an int that represents how old the user is
+     * @return a Calendar object that stores the player's birth date
+     */
+    public static Calendar getUserBirthday(int age) {
+        Calendar birthday = Calendar.getInstance();
+        
+        // prevent the calendar from accepting invalid dates
+        birthday.setLenient(false);
+
+        System.out.println();
+
+        // continously prompt the user to enter their birthday until they enter a valid one
+        while (true) {
+            try {
+                // print the prompt
+                System.out.print("Enter your birthday(MM/DD or M/D): ");
+                String[] userDate = input.nextLine().split("/");
+
+                // set the month and day of `birthday` based on user input
+                // if the date is invalid, it willl throw an ArrayIndexOutOfBoundsException
+                birthday.set(Calendar.MONTH, userDate[0]);
+                birthday.set(Calendar.DAY_OF_MONTH, userDate[1]);
+
+                /* If the user's birthday has already passed
+                 * Set the birth year to currenttYear - age
+                 * Else
+                 * Set the birth year to currentYear - age - 1
+                 */
+                int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+                birthday.set(
+                    Calendar.YEAR,
+                    (Calendar.getInstance().after(birthday)) ? currentYear - age : currentYear - age - 1
+                );
+
+                return birthday;
+
+            } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+                System.out.println("Invalid date");
                 System.out.println();
             }
         }
@@ -182,7 +227,19 @@ public class MenuFile {
             } catch (InputMismatchException e) {
             } 
 
-        } while (!(grade >= 1 && grade <= 12))
+        } while (!(grade >= 1 && grade <= 12));
+
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        Calendar birthday = getUserBirthday(age);
+
+        String data = "Name: " + name + "\n";
+        data       += "Age: " + age + "\n";
+        data       += "Grade: " + grade + "\n";
+
+        // date formatted as MM/DD
+        data       += "Birthday: " + birthday.get(Calendar.MONTH) + "/" + birthday.get(Calendar.DAY_OF_MONTH);
+
+        return data;
     }
 
     public static void main(String[] args) {
@@ -198,26 +255,36 @@ public class MenuFile {
                     // create the file
                     // print a message depending on whether the operation was successful
                     System.out.println(
-                        (createFile(userFile)) ? "File successfully created" : "File already exists";
+                        (createFile(userFile)) ? "File successfully created" : "File already exists"
                     );
-                };
+                }
 
                 case WRITE  -> {
                     // if the file does not exist
                     // print out a message
                     if (!userFile.exists()) {
-                        System.out.println("File does not exist. CREATE a file first.");
+                        System.out.println("File does not exist. CREATE the file first.");
 
                     } else { // if it exists
-                        writeFile(userFile);
+                        // get the user's bio info and write it to the file
+                        writeFile(userFile, getUserBioInfo());
+                        System.out.println("Information successfully written to file");
                     }
-                };
+                }
 
                 case READ   -> {
-                    readFile(userFile)
-                };
+                    String data = readFile(userFile);
 
-                case QUIT   -> return;
+                    // if the file is empty, print out a warning
+                    // if the file has content, print it out
+                    System.out.println(
+                        (data.equals("")) ? "The file is empty. Please WRITE to it first." : data
+                    );
+                }
+
+                case QUIT   -> {
+                    return;
+                }
             }
         }
     }
