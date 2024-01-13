@@ -1,3 +1,6 @@
 [submodule "java/battleship"]
-	path = java/jattleship
+	path = java/battleship
 	url = https://github.com/Eric2422/battleship.git
+[submodule "java/files"]
+	path = java/files
+	url = https://github.com/Eric2422/files.git
