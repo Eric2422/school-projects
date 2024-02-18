@@ -4,6 +4,6 @@
 [submodule "java/files"]
 	path = java/files
 	url = https://github.com/Eric2422/files.git
-[submodule "java/tutoring"]
-	path = java/tutoring
-	url = https://github.com/Eric2422/tutoring.git
+[submodule "java/tutorMeNext"]
+	path = java/tutorMeNext
+	url = https://github.com/Eric2422/tutorMeNext.git
