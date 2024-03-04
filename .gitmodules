@@ -7,6 +7,3 @@
 [submodule "java/tutorMeNext"]
 	path = java/tutorMeNext
 	url = https://github.com/Eric2422/tutorMeNext.git
-[submodule "python/adventure_game"]
-	path = python/adventure_game
-	url = /Users/eric/school-projects/python/adventure_game
